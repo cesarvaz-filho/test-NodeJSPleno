@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import {JSONData} from './fakeApi';
 import MarkerClusterer from '@googlemaps/markerclustererplus';
+import {JSONData} from '../../fakeApi';
 
-function App() {
+function Map() {
   const mapRef = useRef();
   useEffect(() => {
     const locations = JSONData;
@@ -18,15 +18,16 @@ function App() {
         label: name
       });
     });
+
     const markerCluster = new MarkerClusterer(map, markers,
       {imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"}
-     );
-      
+    );
+
     return map
   }, []);
 
   
-  return <div id="map" ref={mapRef} style={{ width: 1000, height: 1000 }}></div>;
+  return <div id="map" ref={mapRef}></div>;
 }
 
-export default App;
+export default Map;
